@@ -11,7 +11,8 @@ namespace Com.Minesweeper.UI
         [SerializeField] private GameObject mainMenuPanel;
         [SerializeField] private GameObject gamePlayPanel;
         [SerializeField] private GameObject gameOverpanel;
-        [SerializeField] private Text gameOverText;
+        [SerializeField] private GameObject WinnerPanel;
+        [SerializeField] private GameObject loserPanel;
 
         [SerializeField] private GameController _gameController;
 
@@ -57,7 +58,8 @@ namespace Com.Minesweeper.UI
         private void OnGameOver(GameOverStat gamedata)
         {
             gamePlayPanel.SetActive(false);
-            gameOverText.text = gamedata.isWin ? "Game Win" : "Game Lost";
+            loserPanel.SetActive(!gamedata.isWin);
+            WinnerPanel.SetActive(gamedata.isWin);
             gameOverpanel.SetActive(true);
         }
     }
